@@ -1,0 +1,174 @@
+.start {
+  width: 100%;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  div {
+    align-items: center;
+    i {
+      cursor: pointer !important;
+    }
+  }
+  .icons {
+    width: calc(100vw - 15rem);
+    justify-content: center;
+    .buttons {
+      padding: 0 1rem;
+    }
+    .searchbar {
+      background-color: $root-300;
+      padding: 0.1rem 0.5rem 0.2rem 0.5rem;
+      display: flex;
+      border-radius: 0.8rem;
+      align-items: center;
+      align-content: center;
+      .inpfield {
+        background-color: transparent;
+        margin-left: 0.3rem;
+        border: none !important;
+        width: 6rem;
+        color: $root-900;
+        &:focus {
+          outline: none !important;
+        }
+      }
+    }
+  }
+  .settings {
+    width: 15rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center !important;
+    .more {
+      padding: 0 0.5rem;
+      display: flex;
+      align-items: center;
+      height: 3rem;
+      &:hover {
+        background-color: rgba(39, 39, 39, 0.678);
+      }
+    }
+    .setting-actn {
+      padding: 0 0.5rem;
+      display: flex;
+      align-items: center;
+      height: 3rem;
+    }
+    .box {
+      margin-left: 0.6rem;
+      content: "";
+      width: 0.5rem;
+      height: 3rem;
+      border-left: 0.5px solid $root-600;
+      background-color: $root-100;
+      &:hover {
+        border-left: 0.5px solid $root-700;
+        background-color: $root-200;
+      }
+    }
+  }
+}
+
+.popover-arrow {
+  &::before {
+    display: none !important;
+  }
+  &::after {
+    display: none !important;
+  }
+}
+.popover {
+  max-width: none !important;
+  background-color: unset;
+  margin-bottom: 0.5rem;
+}
+#startPopover {
+  background: rgba(46, 46, 46, 0.8) !important;
+  border: 0.1rem solid rgba(20, 20, 20, 0.281);
+  border-radius: 0.5rem;
+  .startBody {
+    max-width: 40rem !important;
+    &.popover-body {
+      padding: 0 !important;
+    }
+    .inpsearch {
+      background: rgba(16, 16, 16, 0.7) !important;
+      border: none !important;
+      border-radius: 0.1rem !important;
+      border-bottom: 0.2rem solid $blue-600 !important;
+      color: $root-900 !important;
+      &:focus {
+        box-shadow: none !important;
+      }
+      &::before {
+        content: "\F52A";
+        width: 10px !important;
+        height: 10px !important;
+        display: block;
+      }
+    }
+    .container {
+      color: $root-900;
+      .texts {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .allApps {
+          background: rgba(55, 55, 55, 0.7) !important;
+          border-radius: 0.4rem;
+          padding: 0.1rem 0.2rem 0.2rem 0.4rem;
+          cursor: pointer;
+        }
+      }
+      .startApps {
+        width: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .start-item {
+          width: 6rem;
+          padding: 1rem 0;
+          align-items: center;
+          text-align: center;
+          > img {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-bottom: 0.3rem;
+            cursor: pointer;
+          }
+          > div {
+            margin-top: 0.4rem;
+            cursor: pointer;
+          }
+        }
+      }
+      .recommended {
+        padding: 1rem 2rem;
+        flex-wrap: wrap;
+        &-item {
+          padding: 0.5rem 1rem;
+          width: 50%;
+          &-image {
+            > img {
+              width: 2.8rem;
+            }
+          }
+          &-texts {
+            margin-left: 0.5rem;
+          }
+        }
+      }
+    }
+    .footer {
+      width: 100%;
+      border-radius: 0 0 0.5rem 0.5rem;
+      color: $root-900;
+      background-color: rgba(44, 44, 44, 0.514) !important;
+      border-top: 0.1rem solid rgba(20, 20, 20, 0.281);
+    }
+  }
+}

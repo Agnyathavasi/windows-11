@@ -1,4 +1,3 @@
-import './css/App.css'
 import Start from './components/Start'
 import Desktop from './components/Desktop'
 
