@@ -14,10 +14,25 @@ import recycleBin from "../imgs/startIcons/recycleBin.png";
 import settings from "../imgs/startIcons/settings.png";
 import store from "../imgs/startIcons/store.png";
 import teams from "../imgs/startIcons/teams.png";
+import thisPC from "../imgs/desktopIcons/thisPC.png"
 import videosFile from "../imgs/startIcons/videosFile.png";
 import vlc from "../imgs/startIcons/vlc.png";
 import vscode from "../imgs/startIcons/vscode.png";
 import word from "../imgs/startIcons/word.png";
+
+import cortana from "../imgs/taskbarIcons/cortana.png";
+import terminal from "../imgs/taskbarIcons/terminal.png";
+
+export function getTaskBar() {
+  return {
+    mail: mail,
+    cortana: cortana,
+    store: store,
+    terminal: terminal,
+    netflix: netflix,
+    vscode: vscode,
+  };
+}
 
 export function getImage() {
   return {
@@ -45,24 +60,24 @@ export function getImage() {
 export function getrecommendation() {
   return [
     {
+      image: calendar,
+      title: "Meeting : Global level",
+      time: "in 10min",
+    },
+    {
+      image: vlc,
+      title: "Avengers Infinity War",
+      time: "5min ago",
+    },
+    {
       image: videosFile,
-      title: "Movie 1",
-      time: "Recently",
+      title: "The Amazing Spiderman",
+      time: "20min ago",
     },
     {
       image: picturesFile,
-      title: "Image 1",
-      time: "Recently",
-    },
-    {
-      image: videosFile,
-      title: "Movie 2",
-      time: "Recently",
-    },
-    {
-      image: picturesFile,
-      title: "Image 2",
-      time: "Recently",
+      title: "Howdu Huliya",
+      time: "1yr ago",
     },
     {
       image: videosFile,
@@ -70,9 +85,34 @@ export function getrecommendation() {
       time: "Recently",
     },
     {
-      image: picturesFile,
-      title: "Image 3",
+      image: pwrppt,
+      title: "Presentation",
       time: "Recently",
+    },
+  ];
+}
+
+export function getdesktopicons() {
+  return [
+    {
+      image: thisPC,
+      name: 'This PC'
+    },
+    {
+      image: recycleBin,
+      name: 'Recycle Bin'
+    },
+    {
+      image: edge,
+      name: 'Edge'
+    },
+    {
+      image: store,
+      name: 'Store'
+    },
+    {
+      image: vscode,
+      name: 'VS Code'
     },
   ];
 }

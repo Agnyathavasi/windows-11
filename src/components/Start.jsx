@@ -1,6 +1,22 @@
+import {
+  Wifi,
+  ArrowForwardIos,
+  Bluetooth,
+  AirplanemodeActive,
+  DarkMode,
+  AccessibilityNew,
+  LightMode,
+  VolumeUp,
+} from "@mui/icons-material";
 import React from "react";
-import { UncontrolledPopover, PopoverBody, Input } from "reactstrap";
-import { getImage, getrecommendation } from "./imageHelper";
+import {
+  UncontrolledPopover,
+  PopoverBody,
+  Input,
+  ListGroup,
+  ListGroupItem,
+} from "reactstrap";
+import { getImage, getrecommendation, getTaskBar } from "./imageHelper";
 
 function Start() {
   let iconsSet = [
@@ -14,9 +30,14 @@ function Start() {
       icon: "bi bi-search",
     },
     {
-      name: "youtube",
-      icon: "bi bi-youtube",
-      color: "color-red-600",
+      name: "cortana",
+      icon: "bi bi-discord",
+      color: "color-purple-500",
+    },
+    {
+      name: "store",
+      icon: "bi bi-discord",
+      color: "color-purple-500",
     },
     {
       name: "mail",
@@ -29,19 +50,20 @@ function Start() {
       color: "color-green-400",
     },
     {
-      name: "cortana",
-      icon: "bi bi-discord",
-      color: "color-purple-500",
+      name: "netflix",
+      icon: "bi bi-youtube",
+      color: "color-red-600",
+    },
+    {
+      name: "vscode",
+      icon: "bi bi-youtube",
+      color: "color-red-600",
     },
   ];
   let settingIcos = [
     {
       name: "more",
       icon: "bi bi-chevron-up",
-    },
-    {
-      name: "keyboard",
-      icon: "bi bi-keyboard",
     },
     {
       name: "wifi",
@@ -64,7 +86,7 @@ function Start() {
             return (
               <div>
                 <i
-                  className={`buttons bi bi-microsoft color-blue-400 font-size-12`}
+                  className={`bi bi-microsoft color-blue-400 font-size-12`}
                   id="PopoverFocus"
                   type="button"
                 />
@@ -85,7 +107,7 @@ function Start() {
                           Pinned
                         </span>
                         <span className="font-size-8 allApps">
-                          All apps <i class="bi bi-chevron-right"></i>
+                          All apps <i className="bi bi-chevron-right"></i>
                         </span>
                       </div>
                       <div className="startApps mt-1">
@@ -103,7 +125,7 @@ function Start() {
                           Recommended
                         </span>
                         <span className="font-size-8 allApps">
-                          More <i class="bi bi-chevron-right"></i>
+                          More <i className="bi bi-chevron-right"></i>
                         </span>
                       </div>
                       <div className="recommended d-flex align-items-center">
@@ -126,12 +148,38 @@ function Start() {
                         })}
                       </div>
                     </div>
-                    <div className="footer py-2 px-4 d-flex justify-content-space-between">
-                      <div className="profile">
-                        <i class="bi bi-person-circle"></i>
+                    <div className="footer py-2 px-4 font-size-14 d-flex align-items-center justify-content-space-between">
+                      <div className="profile d-flex align-items-center">
+                        <i className="bi bi-person-circle"></i>
+                        <span className="pl-1 font-size-9">
+                          Vishwajith H Shastry
+                        </span>
                       </div>
-                      <div className="shutDown">
-                        <i class="bi bi-power"></i>
+                      <div className="shutDown cursor-pointer">
+                        <i id="shudDownFocus" className="bi bi-power"></i>
+                        <UncontrolledPopover
+                          placement="top"
+                          target="shudDownFocus"
+                          trigger="legacy"
+                          id="shutDownPopover"
+                        >
+                          <PopoverBody className="color-root-900 p-0">
+                            <ListGroup>
+                              <ListGroupItem className="cursor-pointer">
+                                <i className="bi bi-moon-fill font-size-10"></i>{" "}
+                                Sleep
+                              </ListGroupItem>
+                              <ListGroupItem className="cursor-pointer">
+                                <i className="bi bi-arrow-counterclockwise font-size-10"></i>{" "}
+                                Restart
+                              </ListGroupItem>
+                              <ListGroupItem className="cursor-pointer">
+                                <i className="bi bi-power font-size-10"></i>{" "}
+                                Shut Down
+                              </ListGroupItem>
+                            </ListGroup>
+                          </PopoverBody>
+                        </UncontrolledPopover>
                       </div>
                     </div>
                   </PopoverBody>
@@ -140,13 +188,13 @@ function Start() {
             );
           } else if (item.name !== "search")
             return (
-              <i
-                className={`buttons ${item.icon} ${item.color} font-size-12`}
-              />
+              <div className="buttons">
+                <img src={getTaskBar()[item.name]} alt={item.name} />
+              </div>
             );
           else {
             return (
-              <div className="searchbar font-size-8">
+              <div className="searchbar ml-1 font-size-8">
                 <i className={`${item.icon} color-root-900`} />
                 <input
                   type="text"
@@ -159,11 +207,108 @@ function Start() {
         })}
       </div>
       <div className="settings color-root-900 font-size-9">
-        {settingIcos.map((item) => {
-          if (!["more", "wifi", "battery", "megaphone"].includes(item.name))
-            return <i className={`setting-actn ${item.icon}`} />;
-          else return <i className={`more ${item.icon}`} />;
-        })}
+        <div
+          id="settingsPanel"
+          className="d-flex align-items-center settings-hover"
+        >
+          {settingIcos.map((item) => {
+            return (
+              <div>
+                <i className={`more ${item.icon}`} />
+              </div>
+            );
+          })}
+        </div>
+        <UncontrolledPopover
+          placement="top"
+          target="settingsPanel"
+          trigger="legacy"
+          id="settingsPopover"
+        >
+          <PopoverBody>
+            <div className="actn-bar">
+              <div className="cardLayout">
+                <div className="seticons">
+                  <span className="first">
+                    <Wifi className="font-size-9" />
+                  </span>
+                  <span className="second">
+                    <ArrowForwardIos className="font-size-9" />
+                  </span>
+                </div>
+                <span className="font-size-7">Wifi</span>
+              </div>
+              <div className="cardLayout">
+                <div className="seticons">
+                  <span className="single">
+                    <Bluetooth className="font-size-9" />
+                  </span>
+                </div>
+                <span className="font-size-7">Bluetooth</span>
+              </div>
+              <div className="cardLayout">
+                <div className="seticons">
+                  <span className="single">
+                    <AirplanemodeActive className="font-size-9" />
+                  </span>
+                </div>
+                <span className="font-size-7">Airplane Mode</span>
+              </div>
+              <div className="cardLayout">
+                <div className="seticons">
+                  <span className="single">
+                    <i class="bi bi-battery-charging font-size-9"></i>
+                  </span>
+                </div>
+                <span className="font-size-7">Battery Saver</span>
+              </div>
+              <div className="cardLayout">
+                <div className="seticons">
+                  <span className="single">
+                    <DarkMode className="font-size-9 " />
+                  </span>
+                </div>
+                <span className="font-size-7">Focus Assist</span>
+              </div>
+              <div className="cardLayout">
+                <div className="seticons">
+                  <span className="first">
+                    <AccessibilityNew className="font-size-9" />
+                  </span>
+                  <span className="second">
+                    <ArrowForwardIos className="font-size-9" />
+                  </span>
+                </div>
+                <span className="font-size-7">Accessibility</span>
+              </div>
+            </div>
+            <div className="input-ranges p-3">
+              <div className="item d-flex justify-content-space-evenly align-items-center">
+                <span>
+                  <LightMode className="color-root-900 font-size-12" />
+                </span>
+                <input type="range" />
+              </div>
+            </div>
+            <div className="input-ranges p-3">
+              <div className="item d-flex justify-content-space-evenly align-items-center">
+                <span>
+                  <VolumeUp className="color-root-900 font-size-12" />
+                </span>
+                <input type="range" />
+              </div>
+            </div>
+            <div className="footer d-flex justify-content-space-between align-items-center mt-1 px-3 py-2">
+              <div className="font-size-8 d-flex align-items-center">
+                <i class="bi bi-battery-charging font-size-12 px-1"></i>100%
+              </div>
+              <div className="font-size-9">
+                <i class="bi bi-pencil px-2"></i>
+                <i class="bi bi-gear"></i>
+              </div>
+            </div>
+          </PopoverBody>
+        </UncontrolledPopover>
         <div className="col font-size-7 px-1">
           <div className="row-6">
             {new Date().toLocaleTimeString([], {

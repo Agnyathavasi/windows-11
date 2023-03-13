@@ -1,0 +1,16 @@
+.desktop {
+  .item {
+    width: 4.5rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.1rem;
+    img {
+        margin: 0.4rem 0;
+    }
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.152);
+    }
+  }
+}
