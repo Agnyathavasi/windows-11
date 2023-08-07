@@ -1,4 +1,5 @@
 Deployment here -> https://agnyathavasi.github.io/windows-11/
+For better view experience, view this site in fullScreen mode
 
 # Getting Started with Create React App
 
